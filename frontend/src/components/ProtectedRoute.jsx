@@ -47,7 +47,7 @@ export const ProtectedRoute = ({ children }) => {
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
   }
-  return children;
+  return <Outlet/>;
 };
 
 export const AdminRoute = ({ children }) => {
@@ -97,7 +97,7 @@ export const AdminRoute = ({ children }) => {
   if (!isAdmin) {
     return <Navigate to="/" />;
   }
-  return children;
+  return <Outlet/>;
 };
 
 // Hook to get current user info

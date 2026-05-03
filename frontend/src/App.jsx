@@ -113,17 +113,14 @@ function App() {
         <Route path='/forgot-password' element={<ResetPassword />} ></Route>
 
         {/* Admin only routes */}
-        <Route path='/admin' element={
-          <AdminRoute>
-            <AdminDashboard />
-          </AdminRoute>
-        }></Route>
+        <Route path='admin' element={<AdminRoute />}>
+          <Route index element={<AdminDashboard />} ></Route>
+          <Route path='users' element={<UserList />} ></Route>
+        </Route>
 
-        <Route path='/admin/users' element={
-          <AdminRoute>
-            <UserList />
-          </AdminRoute>
-        }></Route>
+        <Route path='/auth' element={<ProtectedRoute />} >
+
+        </Route>
       </Routes>
 
     </BrowserRouter>
