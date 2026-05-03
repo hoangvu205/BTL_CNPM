@@ -26,11 +26,14 @@ export default function Login() {
                     "token",
                     res.data.token
                 );
-                navigate("/")
+                navigate("/");
+                location.reload();
+                
             }
             else{
                 alert("sai tai khoan hoac mat khau")
             }
+            
         } catch (err) {
             console.log(err);
             alert("Sai tài khoản hoặc mật khẩu");
@@ -39,13 +42,8 @@ export default function Login() {
     return (
         <div className="row mt-5">
             <div className="col-4"></div>
-            <form
-                className="col-4 d-flex flex-column gap-3"
-                onSubmit={loginAction}
-            >
-                <h2 className="text-center">
-                    Login
-                </h2>
+            <form className="col-4 d-flex flex-column gap-3" onSubmit={loginAction} >
+                <h2 className="text-center">Login</h2>
                 <input
                     type="email"
                     name="email"
@@ -62,12 +60,7 @@ export default function Login() {
                     value={form.password}
                     onChange={handleChange}
                 />
-                <button
-                    type="submit"
-                    className="btn btn-primary"
-                >
-                    Submit
-                </button>
+                <button type="submit" className="btn btn-primary" >Submit</button>
             </form>
             <div className="col-4"></div>
         </div>

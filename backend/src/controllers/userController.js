@@ -1,4 +1,4 @@
-const conn = require('../config/dbConnect');
+const {conn} = require('../config/dbConnect');
 const jwt = require('jsonwebtoken');
 const login = async (req,res)=>{
     const {email,password} = req.body;

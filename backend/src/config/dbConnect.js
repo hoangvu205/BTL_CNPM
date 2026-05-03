@@ -9,4 +9,4 @@ const conn = mysql.createPool({
 
 console.log("db connected");
 
-module.exports = conn;
+module.exports = {conn};
