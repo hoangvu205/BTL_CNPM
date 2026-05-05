@@ -6,6 +6,12 @@ import ResetPassword from './page/ResetPassword'
 import { ProtectedRoute, AdminRoute, useAuth } from './components/ProtectedRoute'
 import axios from 'axios'
 
+import MovieList from './page/MovieList';
+import MovieDetails from './page/MovieDetails';
+import AdminMovies from './page/admin/AdminMovies';
+import AdminRooms from './page/admin/AdminRooms';
+import AdminShowtimes from './page/admin/AdminShowtimes';
+
 const AdminDashboard = () => {
   const { user, logout } = useAuth();
   return (
@@ -18,6 +24,9 @@ const AdminDashboard = () => {
           <p>Role: {user?.role}</p>
           <div className="mt-3">
             <Link to="/admin/users" className="btn btn-primary me-2">Manage Users</Link>
+            <Link to="/admin/movies" className="btn btn-primary me-2">Manage Movies</Link>
+            <Link to="/admin/rooms" className="btn btn-primary me-2">Manage Rooms</Link>
+            <Link to="/admin/showtimes" className="btn btn-primary me-2">Manage Showtimes</Link>
           </div>
         </div>
       </div>
@@ -75,7 +84,10 @@ const Navigation = () => {
       <div className='col-1'>
         <Link to="/" >Home</Link>
       </div>
-      <div className='col-8'>
+      <div className='col-2'>
+        <Link to="/movies" className="ms-3">Movies</Link>
+      </div>
+      <div className='col-6'>
         {user && (
           <span className="me-3">
             Welcome, {user.name} ({user.role})
@@ -108,6 +120,8 @@ function App() {
       <Navigation />
       <Routes>
         <Route path='/' element={<div className="container mt-5"><h1>Home Page</h1><p>Public content for everyone</p></div>}></Route>
+        <Route path='/movies' element={<MovieList />}></Route>
+        <Route path='/movies/:id' element={<MovieDetails />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/register' element={<Register />} ></Route>
         <Route path='/forgot-password' element={<ResetPassword />} ></Route>
@@ -116,6 +130,9 @@ function App() {
         <Route path='admin' element={<AdminRoute />}>
           <Route index element={<AdminDashboard />} ></Route>
           <Route path='users' element={<UserList />} ></Route>
+          <Route path='movies' element={<AdminMovies />} ></Route>
+          <Route path='rooms' element={<AdminRooms />} ></Route>
+          <Route path='showtimes' element={<AdminShowtimes />} ></Route>
         </Route>
 
         <Route path='/auth' element={<ProtectedRoute />} >

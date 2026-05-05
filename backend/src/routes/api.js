@@ -4,6 +4,10 @@ const userController = require('../controllers/userController');
 const { authenticateUser, requireAdmin, requireAuth } = require('../middlewares/auth');
 const {conn}=require('../config/dbConnect');
 
+const movieRoutes = require('../modules/movie/routes/movieRoutes');
+const cinemaRoomRoutes = require('../modules/cinemaRoom/routes/cinemaRoomRoutes');
+const showtimeRoutes = require('../modules/showtime/routes/showtimeRoutes');
+
 router.post("/login", userController.login);
 router.post("/register", userController.register);
 
@@ -37,5 +41,9 @@ router.get("/admin/users", authenticateUser, requireAdmin, async (req, res) => {
     userList: userList
   });
 });
+
+router.use("/movies", movieRoutes);
+router.use("/cinema-rooms", cinemaRoomRoutes);
+router.use("/showtimes", showtimeRoutes);
 
 module.exports = router;
