@@ -1,0 +1,62 @@
+:root {
+  --clr-primary: #ffc400;
+  --clr-bg: #0f0f13;
+  --clr-surface: #1a1a20;
+  --clr-text: #ffffff;
+  --clr-text-muted: #a0a0ab;
+  --clr-border: #2d2d35;
+  --clr-booked: #3f3f46;
+  --clr-selected: #ffc400;
+  --clr-vip: #7e22ce;
+}
+
+.seat-selection-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  color: var(--clr-text);
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.screen {
+  height: 8px;
+  background: linear-gradient(to bottom, var(--clr-primary), transparent);
+  width: 80%;
+  margin: 0 auto 60px;
+  border-radius: 50%;
+  box-shadow: 0 15px 25px -5px rgba(255, 196, 0, 0.2);
+}
+
+.seating-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 40px;
+  align-items: center;
+}
+
+.seat-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.row-label {
+  width: 30px;
+  font-weight: 700;
+  color: var(--clr-text-muted);
+}
+
+.seat {
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--clr-surface);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.seat--booked { background: var(--clr-booked); cursor: not-allowed; opacity: 0.5; }
+.seat--selected { background: var(--clr-selected); border-color: var(--clr-selected); transform: scale(1.1); }
+.seat--vip { border: 2px solid var(--clr-vip); }
